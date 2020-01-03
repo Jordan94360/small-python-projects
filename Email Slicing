@@ -1,0 +1,18 @@
+while True:
+    
+    def main():
+        
+        user_email = str(input('Enter your email address:'))
+        
+        email_split = user_email.split('@')
+        username = email_split[0]
+        domain = email_split[1]
+        
+        print('Username:', username)
+        print('Domain:', domain)
+        
+        write.csv('Usernames')
+    main()
+
+if __name__ == '__main__':
+    main()
