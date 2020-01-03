@@ -1,0 +1,25 @@
+import random as rand
+
+die1 = rand.randint(0,6)
+die2 = rand.randint(0,6)
+
+while True:
+    
+    def main():
+        
+        user_menu = input('Enter [y] to roll dice OR enter [n] to quit program:')
+        
+        if user_menu == 'y':
+             print('Results:', die1,',',die2)
+             
+            
+        elif user_menu == 'n':
+            print('Thank you, goodbye')
+            exit()
+        else:
+            print('Please enter either [y] or [n]')
+        
+    main()
+
+if __name__ == '__main__':
+    main()
