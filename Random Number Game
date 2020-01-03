@@ -1,0 +1,25 @@
+import random as rand
+
+rand_num = rand.randint(0,25)
+
+def main():
+    user_num = int(input('Enter a random number, the number must be between 1 and 25:'))
+   
+    while True:
+        print(rand_num)
+        if rand_num == user_num:
+            print('You have guessed the number correctly')
+            main()
+        elif rand_num > user_num:
+            print('The number is greater than the one you selected, try again')
+            break
+        elif rand_num < user_num:
+            print('The number is less than the the one you selected, try agian')
+            break
+        else:
+            print('Please select another number')
+            break
+    main()
+    
+if __name__ == '__main__':
+    main()
