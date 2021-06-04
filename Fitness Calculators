@@ -1,22 +1,21 @@
-#displays menu options for user to select. User enters the number next to the corrisponding option then want.
+# displays menu options for user to select. User enters the number next to the corrisponding option then want.
 def menu():
     print('#' * 45, '\n\nWelcome to the fitness calculator program\n')
-    options = [('\n[1]  Kilograms to Pounds'), 
-               ('[2]  Pounds to Kilograms'),
-               ('[3]  Estimated 1 Rep Max (e1RM)'),
-               ('[4]  Basic Metabolic Index (BMI)'), 
-               ('[5]  Max Heart Rate\n'),
-               ('#' * 45)]
+    options = ['\n[1]  Kilograms to Pounds',
+               '[2]  Pounds to Kilograms',
+               '[3]  Estimated 1 Rep Max (e1RM)',
+               '[4]  Basic Metabolic Index (BMI)',
+               '[5]  Max Heart Rate\n',
+               '#' * 45]
 
     for a in options:
         print(a)
 
-#function to calculate kilograms to pounds and return value(s)
-def kg_to_lbs_cal():
 
-    choice = True
+# function to calculate kilograms to pounds and return value(s)
+def kg_to_lbs_cal():
     while True:
-        print('\nPlease enter the kilograms to be convereted')
+        print('\nPlease enter the kilograms to be converted')
         kg = int(input('Kilograms:'))
         lbs = kg * 2.20462
         print('\n', kg, 'kg =', lbs, 'lbs\n')
@@ -26,13 +25,11 @@ def kg_to_lbs_cal():
             kg_to_lbs_cal()
 
         else:
-            print('\nThank you, you will be redirected to the main menu.\n\n')
-            main()
+            exit()
 
-#function to calculate pounds to kilograms and return value(s)
+
+# function to calculate pounds to kilograms and return value(s)
 def lbs_to_kg_calc():
-
-    choice = True
     while True:
         print('\nPlease enter the pounds to be convereted')
         lbs = int(input('Pounds:'))
@@ -43,58 +40,77 @@ def lbs_to_kg_calc():
         if choice == 'y':
             kg_to_lbs_cal()
         else:
-            print('\nThank you, you will be redirected to the main menu.\n\n')
-            main()
+            exit()
 
-#function to calculate estimated 1 rep max
+
+# function to calculate estimated 1 rep max
 def e1rm_calc():
     unit_option = input('[1] Pounds OR [2] Kilograms?:')
 
     if unit_option == '1':
         weight_lbs = int(input('Enter weight lifted:'))
         reps = int(input('Enter number of reps completed:'))
-        e1rm_formula = (weight_lbs) * (36 / (37 - reps))
+        e1rm_formula = weight_lbs * (36 / (37 - reps))
         print('\ne1RM:', e1rm_formula, 'lbs\n\n')
 
     elif unit_option == '2':
         weight_lbs = int(input('Enter weight lifted:'))
         reps = int(input('Enter number of reps completed:'))
-        e1rm_formula = (weight_lbs) * (36 / (37 - reps))
+        e1rm_formula = weight_lbs * (36 / (37 - reps))
         print('\ne1RM:', e1rm_formula, 'kg\n\n')
 
-#funciton to calculate body mass index (BMI), returns BMI and BMI Category
+    choice = str(input('Calculate a new estimated 1 rep max? [y] or [n]'))
+    if choice == 'y':
+        e1rm_calc()
+    else:
+        exit()
+
+
+# funciton to calculate body mass index (BMI), returns BMI and BMI Category
 def bmi_calc():
     body_weight = int(input('Enter your weight in lbs:'))
     height = int(input('Enter your height in inches:'))
 
-    bmi = (703 * body_weight)/(height**2)
+    bmi = (703 * body_weight) / (height ** 2)
 
-    print('\n\nYour Basic Metebolic Index (BMI) is:', bmi,'\n')
+    print('\n\nYour Basic Metebolic Index (BMI) is:', bmi, '\n')
 
     if bmi < 18.5:
-      print('BMI Category: Underweight\n')
+        print('BMI Category: Underweight\n')
 
     elif 18.5 < bmi < 24.9:
-      print('BMI Category: Normal\n')
-    
-    elif 25 < bmi < 29.9:
-      print('BMI Category: Overweight\n')\
+        print('BMI Category: Normal\n')
 
-    elif bmi > 30:
-      print('BMI Category: Obese\n')
+    elif 25 < bmi < 29.9:
+        print('BMI Category: Overweight\n')
+
+    else:
+        print('BMI Category: Obese\n')
+
+    choice = str(input('Calculate a new BMI? [y] or [n]'))
+    if choice == 'y':
+        bmi_calc()
+    else:
+        exit()
+
 
 def max_heart_rate_calc():
-  age = int(input('Enter your age:',))
-  max_heart_rate= 220 - age
+    age = int(input('Enter your age:', ))
+    max_heart_rate = 220 - age
 
-  print('Max heart rate:', max_heart_rate,'\n')
+    print('Max heart rate:', max_heart_rate, '\n')
+
+    choice = str(input('Calculate a new estimated max heart rate? [y] or [n]'))
+    if choice == 'y':
+        max_heart_rate_calc()
+    else:
+        exit()
 
 
 def main():
     while True:
         menu()
-        user_input = str(
-            input('\nPlease select which calculator you want to use:'))
+        user_input = str(input('\nPlease select which calculator you want to use:'))
 
         if user_input == '1':
             kg_to_lbs_cal()
@@ -119,6 +135,7 @@ def main():
         else:
             print('Please enter option 1-5')
             continue
+
 
 if __name__ == '__main__':
     main()
